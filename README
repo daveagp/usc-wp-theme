@@ -1,0 +1,6 @@
+This is a WordPress theme for USC.
+
+It is not a full-fledged theme: no support for header images, nested menus,
+et cetera. But it will handle pages and users just fine. See
+http://cs103.usc.edu/
+Note that you will probably want to disable comments.
