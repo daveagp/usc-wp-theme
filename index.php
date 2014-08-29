@@ -47,9 +47,11 @@ header {
     </div>
     <header class="noprint">
       <div class="center">
-        <h1>
+<h1>
+        <a style="border: none; color: white;" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 	  <span><?php bloginfo( 'name' ); ?></span>
 	  <?php bloginfo( 'description' ); ?>
+</a>
 	</h1>
       </div>
     </header>
@@ -68,7 +70,8 @@ header {
 
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <!--<div <?php post_class(); ?>>-->
-            <!--<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>--> 
+            <!--<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>-->
+            <div style="float:right"> <?php echo UA_INFO ?> </div>
 	    <h2><?php the_title(); ?></h2> 
             <?php the_content(); ?>
             <?php if ( !is_singular() && get_the_title() == '' ) : ?>
@@ -103,7 +106,10 @@ header {
 
     <div id="sidebar" style="z-index: 1000; box-sizing: border-box;" class="noprint">
       <nav id="navigation">
-	<?php wp_nav_menu(); ?>
+        <?php 
+wp_nav_menu( array( 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li>'.UA_INFO.'</li></ul>' ) );
+//	wp_nav_menu(); 
+        ?>
       </nav>
     </div>
 

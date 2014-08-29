@@ -1,4 +1,7 @@
 <?php
+
+  require_once("auth.php");
+
   if ( !isset( $content_width ) ) $content_width = 768;
   if ( function_exists( 'add_theme_support' ) ) add_theme_support( 'automatic-feed-links' );
   if ( function_exists( 'register_nav_menu' ) ) register_nav_menu( 'menu', 'Menu' );
@@ -25,5 +28,16 @@ function nonbreaking_hyphens($content) {
 }
 
 add_filter( 'the_content', 'nonbreaking_hyphens');
+
+
+function noside_func() {
+     return "<style type='text/css'>#sidebar {display:none;} #main {width:auto; float:none;}</style>";
+}
+add_shortcode('noside', 'noside_func');
+
+function spoiler_func($atts, $content) {
+     return "<span class='spoiler'>$content</span>";
+}
+add_shortcode('spoiler', 'spoiler_func');
 
 ?>

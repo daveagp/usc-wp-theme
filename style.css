@@ -400,6 +400,7 @@ pre {
     border: 1px solid #d8d8d8;
     background: #f9f9f9;
     padding: 10px;
+    overflow: auto;
 }
 
 code {
@@ -424,4 +425,13 @@ pre > code {
 
 .current_page_item {
     font-weight: bold;
+}
+
+.spoiler {
+    color: white;
+    border: 1px solid black;
+}
+
+.smaller {
+   font-size: 80% !important;
 }
