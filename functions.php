@@ -40,4 +40,9 @@ function spoiler_func($atts, $content) {
 }
 add_shortcode('spoiler', 'spoiler_func');
 
+function websheet_func($atts, $content) {
+     return "webshoot";
+}
+add_shortcode('websheet', 'websheet_func');
+
 ?>

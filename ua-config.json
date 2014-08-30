@@ -1,6 +1,9 @@
 {
  "hybridauth-base_url":
-         "http://cs103.usc.edu/wp-content/themes/usc-wp-theme/hybridauth/hybridauth/index.php",
+         "http://cs103.usc.edu/hybridauth/hybridauth/index.php",
+
+ "hybridauth-Auth_path":
+  "/home/parallel05/www/docs/hybridauth/hybridauth/Hybrid/Auth.php",
 
  "google-id":"522548444910-2i0iaeh0i61h5knrmdbn4hrt3e92vc0k.apps.googleusercontent.com",
  "google-secret":"kHYaY1TP9rSjtbwEzkcc0tQG"

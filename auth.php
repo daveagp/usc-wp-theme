@@ -32,7 +32,8 @@ else {
   if ($config_jo == NULL) {
     $config_error = "ua-config.json is not JSON formatted";
   }
-  else foreach (array("hybridauth-base_url") as $required) { 
+  else foreach (array("hybridauth-base_url",
+    "hybridauth-Auth_path") as $required) { 
       if (!array_key_exists($required, $config_jo)) {
         $config_error = "ua-config.json does not define $required";
         if ($required=="safeexec-executable-abspath" || $required=="java_jail-abspath")
@@ -75,6 +76,7 @@ else {
             "scope"           => "https://www.googleapis.com/auth/userinfo.email",
             "access_type"     => "online",
             "approval_prompt" => "auto",
+            "hd" => "usc.edu",
 	    "name" => "@usc.edu via Google"
             );
   }
@@ -82,7 +84,7 @@ else {
   //echo json_encode($ha_config);
   
   // now call the hybridauth library
-  require_once( "hybridauth/hybridauth/Hybrid/Auth.php" ); 
+  include_once (  $config_jo["hybridauth-Auth_path"] );
   $hybridauth = new Hybrid_Auth( $ha_config );
 
   if (array_key_exists('auth', $_REQUEST) && $_REQUEST['auth']=='logout') {
@@ -192,4 +194,4 @@ else {
   }
 }
 
-echo UA_JAVASCRIPT;
+if (!is_admin()) echo UA_JAVASCRIPT;
