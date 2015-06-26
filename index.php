@@ -1,9 +1,22 @@
+<?php
+if ($WS_AUTHINFO["error_plaintext"] != "") {
+   $usc_auth_info = "<span><i>".$WS_AUTHINFO["error_plaintext"]."</i></span>";
+}
+else {
+   $authp = $WS_AUTHINFO["logged_in"] ? 'logout' : 'Google';
+   $text = $WS_AUTHINFO["logged_in"] ?
+      ("Logout from <b>".$WS_AUTHINFO['username']."</b>")
+      : 'Login to @usc account via Google';
+   $usc_auth_info =
+      "<a class='usc-auth-status' " .
+      "href=\"javascript:websheets.auth_reload('$authp')\">$text</a>";
+}
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
  <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <link rel="profile" href="http://gmpg.org/xfn/11" />
-    <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <title><?php bloginfo( 'name' ); ?><?php wp_title( '&mdash;' ); ?></title>
 
@@ -16,17 +29,23 @@
 
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
+   <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?6" />
    <script src="<?php echo $themedir; ?>/js/jquery-scrolltofixed-min.js"></script>
+   <script src="<?php echo $themedir; ?>/js/codedrop.js?24"></script>
+   <script src="<?php echo $themedir; ?>/js/expand.js"></script>
+   <script src="<?php echo $themedir; ?>/js/highlight.js?1"></script>
+   <script src="<?php echo $themedir; ?>/js/beginlec.js"></script>
+
    <script type="text/javascript">
      jQuery(document).ready(function() {
-         jQuery('#sidebar').scrollToFixed( { 
-     marginTop: <?php echo is_admin_bar_showing() ? 70+32 : 70; ?>,
-     fixed: function() { jQuery(this).css("box-sizing", "inherit"); },
+         jQuery("#sidebar").scrollToFixed( { 
+            marginTop: <?php echo ( is_admin_bar_showing() ? 70+32 : 70); ?>,
+            fixed: function() { jQuery(this).css("box-sizing", "inherit"); },
      unfixed: function() { jQuery(this).css("box-sizing", "border-box"); }
          });
      });
      </script>
-
+   
 <style type="text/css">
 #logo_wrapper #logo {
     background: #990000 url("<?php echo $themedir; ?>/img/logo.gif") no-repeat;
@@ -64,14 +83,15 @@ header {
 	</h1>
       </div>
       <div id="main">
-	<div class="mobileonly-block">
-	  <a href="#navigation">Jump to navigation menu</a>
-	</div>
-
+   <div style="font-size:12px" class="noprint">
+	<span class="mobileonly-inline">
+	  <a href="#navigation" style="float:left">Navigation menu</a>
+	</span>
+            <span style="float:right"> <?php echo $usc_auth_info; ?> </span>
+</div><div style='clear:both' class="noprint"></div>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <!--<div <?php post_class(); ?>>-->
             <!--<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>-->
-            <div style="float:right"> <?php echo UA_INFO ?> </div>
 	    <h2><?php the_title(); ?></h2> 
             <?php the_content(); ?>
             <?php if ( !is_singular() && get_the_title() == '' ) : ?>
@@ -107,7 +127,7 @@ header {
     <div id="sidebar" style="z-index: 1000; box-sizing: border-box;" class="noprint">
       <nav id="navigation">
         <?php 
-wp_nav_menu( array( 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li>'.UA_INFO.'</li></ul>' ) );
+wp_nav_menu( array( 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li>'.$usc_auth_info.'</li></ul>' ) );
 //	wp_nav_menu(); 
         ?>
       </nav>

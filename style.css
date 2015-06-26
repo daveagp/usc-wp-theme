@@ -4,11 +4,148 @@ Theme URI: https://github.com/daveagp/usc-wp-theme
 Author: david.pritchard@usc.edu based on theme by Ramy
 Author URI: http://ints.io/daveagp
 Description: A basic theme with the USC look and feel. 
-Version: 1.0
+Version: S15
 License: GPL v2
 
 A basic theme.
 */
+
+pre {
+    overflow: auto;
+}
+pre, tt, code {
+    font-family: "Droid Sans Mono", "Monaco", "Courier New";
+    border: 1px solid #d8d8d8; 
+    background: #f9f9f9; 
+    padding-left: 0.5ch;
+    padding-right: 0.5ch;
+}
+
+li > tt, li > code {
+    border: none;
+}
+
+#main img {
+max-width: 100%;
+height: auto;
+}
+
+#content blockquote {
+margin: 20px 0;
+padding: 0 20px 0 50px;
+background: url(quote.png) 5% 0% no-repeat;
+border: none;
+font-style: italic;
+}
+
+#content blockquote > * {
+margin-left: 20px !important;
+}
+
+#content .CodeMirror-scroll {
+    min-height: 0px;
+}
+
+.highlight .CodeMirror * {
+    line-height: 22px !important;
+    font-size: 18px !important;
+}
+
+
+html.notop {
+margin-top: 0px !important;
+}
+
+.spoiler pre, .spoiler tt, .spoiler code, 
+.wscontainer .description pre, .wscontainer .description tt, .wscontainer .description code, 
+.wscontainer .results pre, .wscontainer .results tt, .wscontainer .results code, 
+.wscontainer .nocode-ui pre, .wscontainer .nocode-ui tt, .wscontainer .nocode-ui code, 
+.codedrop pre, .codedrop tt, .codedrop code {
+    border: none; 
+    background: none; 
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#content .wscontainer {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
+.box {
+border:1px solid #88F;
+margin:3px;
+padding:3px;
+border-radius:5px;
+white-space:nowrap;
+}
+
+.box:hover {
+cursor: default;
+}
+
+.qa > li:nth-child(odd) {
+  margin-top: 10px;
+  font-weight: bold;  
+}
+.qa > li:nth-child(odd)::before {
+    content: "Q: ";
+}
+.qa > li:nth-child(even)::before {
+    content: "A: ";
+    font-weight: bold;  
+}
+.qa {
+    list-style-type: none;
+    padding: 0;
+}
+
+.expand {display: none; border-radius: 5px;}
+.expand-body {display: none; background-color: #EFE; border-radius: 5px; padding: 5px}
+.expand-header {background-color: #CFC; border-radius: 5px; padding: 5px; cursor: pointer}
+#content .expand-body p {margin:0px;}
+
+
+.w15 {width: 15%;}
+.w40 {width: 40%;}
+
+.codedrop .button {
+   text-decoration: none;
+   font-weight: normal;
+   border: 1px solid black;
+   color: black;
+   background: #AFF;
+   border-radius: 3px;
+   padding: 2px 5px;
+}
+
+.codedrop:not(.su) .su-only,
+.codedrop:not(.lab) .lab-only,
+.codedrop:not(.pa) .pa-only {
+   display: none;
+}
+
+.codedrop.clickable .button:hover {
+   cursor: pointer;
+   color: blue;
+   border-color: blue;
+}
+
+.codedrop .status pre { 
+   overflow: visible;
+}
+
+.codedrop .file-select {
+    visibility:hidden;
+    height:0;
+    width:0;
+}
+
+.codedrop td,
+.codedrop .checkdiv {
+   text-align: center;
+}
 
 @import url(http://fonts.googleapis.com/css?family=Merriweather:400,700,300,900);
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
@@ -22,7 +159,7 @@ html, body {
 }
 
 .center {
-    width: 80%;
+    max-width: 105ch;
     margin: 0 auto;
     -webkit-transition: 0.3s all;
     -moz-transition: 0.3s all;
@@ -108,7 +245,7 @@ header h1 span{
     border-width: 0px 1px;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
     position: relative;
-    z-index: 5;
+    /*z-index: 5;*/
     background: #fff;
     color: #333;
     font-weight: 300;
@@ -128,11 +265,20 @@ header h1 span{
     font-variant: small-caps
 }
 
+
 #content h3 {
-    margin: 20px 0 0 0;
-    padding: 0;
     font-size: 21px;
     line-height: 23px;
+}
+
+#content h4 {
+    font-size: 19px;
+    line-height: 21px;
+}
+
+#content h3, #content h4 {
+    margin: 20px 0 0 0;
+    padding: 0;
     
     font-family: "PT Serif", "Merriweather", arial, sans-serif;
     
@@ -159,13 +305,8 @@ header h1 span{
 #content p {
     margin: 5px 0 10px 0;
     padding: 0;
-    font-size: 15px;
-    line-height: 22px;
-}
-
-#content li {
-    font-size: 15px;
-    line-height: 22px;
+/*    font-size: 15px;
+    line-height: 22px; */
 }
 
 #content .small_key {
@@ -294,7 +435,8 @@ footer .right {
     float: right;
 }
 
-.mobileonly-block {display:none;}
+.mobileonly-inline {display:none;}
+.mobileonly-span {display:none;}
 
 @media screen {
  .noscreen {display:none;}
@@ -347,9 +489,6 @@ footer .right {
 	width: auto;
 	}
     
-    .center {
-	width: 95%;
-	}
     
     header {
 	height: 150px;
@@ -364,13 +503,11 @@ footer .right {
 	line-height: 30px;
 	}
     .mobileonly-block {display:block;}
+    .mobileonly-inline {display:inline;}
 
 }
 
 @media screen and (max-device-width: 640px), screen and (max-width: 640px) { 
-    .center {
-	width: 90%;
-	}
 
     header {
 	height: 150px;
@@ -394,34 +531,6 @@ a:hover {
     opacity: 0.6;
 }
 
-pre {
-    font-size: 13px;
-    font-family: "Droid Sans Mono", "Monaco", "Courier New";
-    border: 1px solid #d8d8d8;
-    background: #f9f9f9;
-    padding: 10px;
-    overflow: auto;
-}
-
-code {
-    font-size: 12px;
-    font-family: "Droid Sans Mono", "Monaco", "Courier New";
-    border: 1px solid #d8d8d8;
-    background: #f9f9f9;
-    padding: 1px 4px;
-    border-radius: 3px;
-}
-pre > code {
-    border: none;
-    padding: 0;
-    background: none;
-    padding: 0;
-    border-radius: 0;
-}
-
-#twitter-widget-0 {
-    width:100%;
-  }
 
 .current_page_item {
     font-weight: bold;
@@ -432,6 +541,39 @@ pre > code {
     border: 1px solid black;
 }
 
+.spoiler:hover {
+    color: inherit;
+    border: 1px dashed purple;
+    background: #DFE;
+}
+
 .smaller {
    font-size: 80% !important;
+}
+
+div.wp-caption img{
+   margin: 5px;
+   max-width: 630px;
+}
+
+div.wp-caption {
+   background: #EEE;
+   border: 1px solid grey;
+   margin: 5px;
+   max-width: 100%;
+}
+
+p.wp-caption-text {
+   text-align: center;
+   font-size: 80%;
+   font-weight: bold;
+   margin: 3px;
+}
+
+.alignright {float: right;}
+.alignleft {float: left;}
+
+.aligncenter, div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
 }
