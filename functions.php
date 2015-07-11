@@ -59,8 +59,7 @@ function my_theme_add_editor_styles() {
 add_action( 'init', 'my_theme_add_editor_styles' );
 
 require_once("/home/parallel05/www/docs/websheets/auth.php");
-
-require_once("codedrop.php");
 require_once("websheets.php");
+require_once("codedrop-adaptor.php"); // note, this depends on websheets.js
 require_once("visualize.php");
 

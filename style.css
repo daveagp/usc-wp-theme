@@ -60,7 +60,7 @@ margin-top: 0px !important;
 .wscontainer .description pre, .wscontainer .description tt, .wscontainer .description code, 
 .wscontainer .results pre, .wscontainer .results tt, .wscontainer .results code, 
 .wscontainer .nocode-ui pre, .wscontainer .nocode-ui tt, .wscontainer .nocode-ui code, 
-.codedrop pre, .codedrop tt, .codedrop code {
+{
     border: none; 
     background: none; 
     padding-left: 0;
@@ -105,47 +105,6 @@ cursor: default;
 .expand-body {display: none; background-color: #EFE; border-radius: 5px; padding: 5px}
 .expand-header {background-color: #CFC; border-radius: 5px; padding: 5px; cursor: pointer}
 #content .expand-body p {margin:0px;}
-
-
-.w15 {width: 15%;}
-.w40 {width: 40%;}
-
-.codedrop .button {
-   text-decoration: none;
-   font-weight: normal;
-   border: 1px solid black;
-   color: black;
-   background: #AFF;
-   border-radius: 3px;
-   padding: 2px 5px;
-}
-
-.codedrop:not(.su) .su-only,
-.codedrop:not(.lab) .lab-only,
-.codedrop:not(.pa) .pa-only {
-   display: none;
-}
-
-.codedrop.clickable .button:hover {
-   cursor: pointer;
-   color: blue;
-   border-color: blue;
-}
-
-.codedrop .status pre { 
-   overflow: visible;
-}
-
-.codedrop .file-select {
-    visibility:hidden;
-    height:0;
-    width:0;
-}
-
-.codedrop td,
-.codedrop .checkdiv {
-   text-align: center;
-}
 
 @import url(http://fonts.googleapis.com/css?family=Merriweather:400,700,300,900);
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);

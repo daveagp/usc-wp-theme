@@ -53,14 +53,14 @@ function websheet_func($atts, $content) {
                           );
 
   global $WS_AUTHINFO;
-  $process = proc_open("/home/parallel05/www/docs/websheets/load.py " . $atts["slug"] . " " . $WS_AUTHINFO['username'], $descriptorspec, $pipes, "/home/parallel05/www/docs/websheets/");
+  $process = proc_open("/home/parallel05/www/docs/websheets/load.py " . $atts["slug"] . " " . $WS_AUTHINFO['username'] . " False", $descriptorspec, $pipes, "/home/parallel05/www/docs/websheets/");
 
   if (!is_resource($process)) {
     echo "Internal error, could not run Websheet program";
     die;
   }
 
-  fwrite($pipes[0], "");//$stdin);
+  fwrite($pipes[0], json_encode($WS_AUTHINFO));//$stdin);
   fclose($pipes[0]);
   $stdout = stream_get_contents($pipes[1]);
   fclose($pipes[1]);
@@ -71,8 +71,11 @@ function websheet_func($atts, $content) {
   if ($stderr != "" || $return_value != 0) {
     echo "Internal error: <pre>";
     echo $stdout . $stderr . "\nReturned $return_value</pre>";
-    die;
+    return;
   }
+
+  if ($stdout[0] != '{') 
+     return "<div><tt><b>Websheet error: $stdout. Please notify the instructor.</b></tt></div>";
 
   return 
   '<div><script type=text/javascript>websheets.createHere("'.$atts["slug"].'"'.",$stdout);</script></div>";

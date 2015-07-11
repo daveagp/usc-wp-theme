@@ -1,6 +1,6 @@
 <?php
-if ($WS_AUTHINFO["error_plaintext"] != "") {
-   $usc_auth_info = "<span><i>".$WS_AUTHINFO["error_plaintext"]."</i></span>";
+if ($WS_AUTHINFO["error_span"] != "") {
+   $usc_auth_info = "<span><i>".$WS_AUTHINFO["error_span"]."</i></span>";
 }
 else {
    $authp = $WS_AUTHINFO["logged_in"] ? 'logout' : 'Google';
@@ -29,9 +29,8 @@ else {
 
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-   <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?6" />
+   <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?7" />
    <script src="<?php echo $themedir; ?>/js/jquery-scrolltofixed-min.js"></script>
-   <script src="<?php echo $themedir; ?>/js/codedrop.js?24"></script>
    <script src="<?php echo $themedir; ?>/js/expand.js"></script>
    <script src="<?php echo $themedir; ?>/js/highlight.js?1"></script>
    <script src="<?php echo $themedir; ?>/js/beginlec.js"></script>
