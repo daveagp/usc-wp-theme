@@ -73,18 +73,6 @@ margin-top: 0px !important;
 }
 
 
-.box {
-border:1px solid #88F;
-margin:3px;
-padding:3px;
-border-radius:5px;
-white-space:nowrap;
-}
-
-.box:hover {
-cursor: default;
-}
-
 .qa > li:nth-child(odd) {
   margin-top: 10px;
   font-weight: bold;  
